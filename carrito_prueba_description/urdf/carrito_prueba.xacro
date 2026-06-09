@@ -1,0 +1,150 @@
+<?xml version="1.0" ?>
+<robot name="carrito_prueba" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find carrito_prueba_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find carrito_prueba_description)/urdf/carrito_prueba.ros2control" />
+<xacro:include filename="$(find carrito_prueba_description)/urdf/carrito_prueba.gazebo" />
+
+<link name="base_footprint"/>  
+  
+  <joint name="base_footprint_joint" type="fixed">  
+    <parent link="base_footprint"/>  
+    <child link="base_link"/>  
+    <origin xyz="0 0 0" rpy="0 0 0"/>  
+  </joint>  
+
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-1.007034455251554e-17 0.0 0.01500000000077751" rpy="0 0 0"/>
+    <mass value="3.5448307511653376"/>
+    <inertia ixx="0.003243" iyy="0.006919" izz="0.009632" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="llanta_2_1">
+  <inertial>
+    <origin xyz="4.614364446098307e-14 -0.0053405414104664845 2.2353728243440507e-10" rpy="0 0 0"/>
+    <mass value="0.41532869125794636"/>
+    <inertia ixx="0.000152" iyy="0.000281" izz="0.000152" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.05 0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.05 0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="llanta_1_1">
+  <inertial>
+    <origin xyz="4.9911463850804694e-14 -0.005340541410466471 2.2351152526023377e-10" rpy="0 0 0"/>
+    <mass value="0.41532869125794636"/>
+    <inertia ixx="0.000152" iyy="0.000281" izz="0.000152" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.05 0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.05 0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="llanta_3_1">
+  <inertial>
+    <origin xyz="-4.547057175230407e-14 0.0053405414104664845 2.2353861990620505e-10" rpy="0 0 0"/>
+    <mass value="0.41532869125794636"/>
+    <inertia ixx="0.000152" iyy="0.000281" izz="0.000152" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.05 -0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.05 -0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="llanta_4_1">
+  <inertial>
+    <origin xyz="1.942890293094024e-14 0.005340541410466457 2.235635721686835e-10" rpy="0 0 0"/>
+    <mass value="0.41532869125794636"/>
+    <inertia ixx="0.000152" iyy="0.000281" izz="0.000152" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.05 -0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.05 -0.0525 -0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find carrito_prueba_description)/meshes/llanta_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="joint1" type="continuous">
+  <origin xyz="0.05 -0.0525 0.015" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="llanta_2_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="joint2" type="continuous">
+  <origin xyz="-0.05 -0.0525 0.015" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="llanta_1_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="joint3" type="continuous">
+  <origin xyz="0.05 0.0525 0.015" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="llanta_3_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="joint4" type="continuous">
+  <origin xyz="-0.05 0.0525 0.015" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="llanta_4_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+</robot>
