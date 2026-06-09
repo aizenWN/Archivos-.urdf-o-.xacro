@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<robot name="Pendulo_prueba" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find pendulo_prueba_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find pendulo_prueba_description)/urdf/Pendulo_prueba.ros2control" />
+<xacro:include filename="$(find pendulo_prueba_description)/urdf/Pendulo_prueba.gazebo" />
+<link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+<link name="base_link">
+  <inertial>
+    <origin xyz="-2.3938994665056634e-13 -0.005501928733996619 0.02500000002421002" rpy="0 0 0"/>
+    <mass value="6.296712580102756"/>
+    <inertia ixx="0.009048" iyy="0.012332" izz="0.01886" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://pendulo_prueba_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://pendulo_prueba_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pendulo_1">
+  <inertial>
+    <origin xyz="0.004191068534825609 5.551115123125783e-17 -0.05794616265917223" rpy="0 0 0"/>
+    <mass value="1.7459655095130093"/>
+    <inertia ixx="0.002457" iyy="0.002339" izz="0.000604" ixy="-0.0" iyz="-0.0" ixz="0.000135"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.075 -0.025" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://pendulo_prueba_description/meshes/pendulo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.075 -0.025" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://pendulo_prueba_description/meshes/pendulo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="joint1" type="continuous">
+  <origin xyz="0.0 -0.075 0.025" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="pendulo_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<gazebo reference="base_link">
+    <static>true</static>
+  </gazebo>
+
+  <gazebo reference="pendulo_1">
+    <visual>
+      <material>
+        <ambient>0.8 0.8 0.8 1.0</ambient>
+        <diffuse>0.8 0.8 0.8 1.0</diffuse>
+        <specular>1.0 1.0 1.0 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+
+</robot>
