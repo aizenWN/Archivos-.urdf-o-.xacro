@@ -52,10 +52,50 @@ def generate_launch_description():
         )]
     )
 
+    rviz_config_file = os.path.join(pkg_ros_gz_rbot, 'config', 'display.rviz')
+
+    rviz_node=Node(
+	    package='rviz2',
+	    executable='rviz2',
+	    name='rviz2',
+	    output='screen',
+        arguments=['-d', rviz_config_file]
+    )
+
     ros_gz_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         parameters=[{'config_file': ros_gz_bridge_config}],
+        output='screen'
+    )
+
+    joint_state_broadcaster_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=[
+            'joint_state_broadcaster',
+            '--param-file',
+            os.path.join(
+                pkg_ros_gz_rbot,
+                'config',
+                'ros2_controller.yaml'
+            )
+        ],
+        output='screen'
+    )
+
+    velocity_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=[
+            'velocity_controller',
+            '--param-file',
+            os.path.join(
+                pkg_ros_gz_rbot,
+                'config',
+                'ros2_controller.yaml'
+            )
+        ],
         output='screen'
     )
 
@@ -64,4 +104,7 @@ def generate_launch_description():
         spawn_robot,
         ros_gz_bridge,
         robot_state_publisher,
+        joint_state_broadcaster_spawner,
+        velocity_controller_spawner,
+	    rviz_node,
     ])
